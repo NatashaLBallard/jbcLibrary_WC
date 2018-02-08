@@ -27,10 +27,10 @@ public class JBCLibrary {
     @Size(min=4)
     private String year;
 
-    @Size(min=10)
+//    @Size(min=10)
     private String isbn;
 
-    @Size(min=5)
+//    @Size(min=5)
     private String image;
 
 
