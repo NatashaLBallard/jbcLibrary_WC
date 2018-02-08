@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+
+
 import javax.validation.Valid;
 
 @Controller
@@ -34,7 +36,7 @@ public class MainController {
     //Add Books page
     @GetMapping("/add")
     public String addBooksForm(Model model){
-        model.addAttribute("jbcLibrary", new JBCLibrary);
+        model.addAttribute("jbcLibrary", new JBCLibrary());
         return "bookform";
     }
 
@@ -48,6 +50,7 @@ public class MainController {
         jbcLibraryRepository.save(jbcLibrary);
         return "redirect:/";
     }
+
 
 
 
@@ -79,16 +82,19 @@ public class MainController {
 
 
 
+
+
+
     //-------------------
 
 
-    @Autowired
-    BorrowRepository borrowRepository;
+//    @Autowired
+//    BorrowRepository borrowRepository;
 
     //View Borrowed Books page
     @RequestMapping("/borrow")
     public String listBorrowedBooks(Model model){
-        model.addAttribute("borrowedBooks", new StatusSystem());
+        model.addAttribute("jbcLibraries", new JBCLibrary());
         return "borrow";
     }
 
@@ -97,43 +103,33 @@ public class MainController {
     //Add Checked book to Borrow Repository page
     @GetMapping("/add_borrow")
     public String addBorrowedBook(Model model){
-        model.addAttribute("borrowedBook", new StatusSystem());
+        model.addAttribute("jbcLibrary", new JBCLibrary());
         return "borrow";
     }
 
     //Process Borrow Checkbox
     @PostMapping("/borrow_process")
-    public String borrowForm(@Valid @ModelAttribute("borrowedBook") StatusSystem statusSystem, BindingResult result) {
+    public String borrowForm(@Valid @ModelAttribute("jbcLibrary") JBCLibrary jbcLibrary, BindingResult result) {
         if (result.hasErrors()){
             return "borrow";
         }
-        borrowRepository.save(statusSystem);
+        jbcLibraryRepository.save(jbcLibrary);
         return "redirect:/";
     }
 
-
-    //View Details of Book
-    @RequestMapping("/detail-borrow/{id}")
-    public String showBorrowedBook(@PathVariable("id") long id, Model model) {
-        model.addAttribute("borrowedBook", borrowRepository.findOne(id));
-        return "borrow_show";
-    }
-
-
-    //Update of Book
-    @RequestMapping("/update-borrow/{id}")
-    public String updateBorrowedBook(@PathVariable("id") long id, Model model) {
-        model.addAttribute("borrowedBook", borrowRepository.findOne(id));
-        return "borrow";
-    }
-
-
-    //Delete Book
-    @RequestMapping("/delete-borrow/{id}")
-    public String deleteBorrowedBook(@PathVariable("id") long id) {
-        borrowRepository.delete(id);
+    @RequestMapping("/checkbox-process")
+    public String checked(@RequestParam boolean borrowed){
+        if (borrowed==false) {
+            System.out.println("Book is not checked out");
+//            this.borrowed==true
+            return "borrow_show";
+        }
+        else
+            System.out.println("Book is checked out");
+        //jbcLibraryRepository.save(jbcLibrary);
         return "redirect:/";
     }
+
 
 
 

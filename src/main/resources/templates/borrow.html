@@ -19,21 +19,17 @@ Borrow page
         <th>Image</th>
         <th>Borrowed</th>
     </tr>
-    <tr th:each="borrowedBook: ${borrowedBooks}">
-        <td th:text="${borrowedBook.title}"></td>
-        <td th:text="${borrowedBook.author}"></td>
-        <td th:text="${borrowedBook.year}"></td>
-        <td th:text="${borrowedBook.isbn}"></td>
-        <td th:text="${borrowedBook.image}"></td>
-        <td th:text="${borrowedBook.borrowed}"></td>
+    <tr th:each="jbcLibrary: ${jbcLibraries}">
+        <td th:text="${jbcLibrary.title}"></td>
+        <td th:text="${jbcLibrary.author}"></td>
+        <td th:text="${jbcLibrary.year}"></td>
+        <td th:text="${jbcLibrary.isbn}"></td>
+        <td th:text="${jbcLibrary.image}"></td>
+        <td th:text="${jbcLibrary.borrowed}"></td>
         <td>
-            <a th:href="@{/update-borrow/{id}(id=${borrowedBook.id})}">Update</a>
-            <a th:href="@{/detail-borrow/{id}(id=${borrowedBook.id})}">Details</a>
-            <a th:href="@{/delete-borrow/{id}(id=${borrowedBook.id})}">Delete</a>
-        </td>
-        <td>
-            <form action="#">
-                <input type="checkbox" name="borrow" value="true" />
+            <form action="/checkbox-process" method="post">
+                <!--<input type="submit" value="Borrow" />-->
+                <input type="checkbox" name="borrowed" /><!--value="true"-->
                 <input type="submit" value="Submit" />
             </form>
         </td>
@@ -45,37 +41,6 @@ Borrow page
 <hr/>
 
 
-<table border="1" >
-    <tr>
-        <th>Title</th>
-        <th>Borrowed</th>
-    </tr>
-    <tr th:each="borrowedBook: ${borrowedBooks}">
-        <td th:text="${borrowedBook.title}"></td>
-        <td th:text="${borrowedBook.borrowed}"></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${borrowedBook.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${borrowedBook.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${borrowedBook.id})}">Delete</a>
-        </td>
-        <td>
-            <form action="#">
-                <input type="checkbox" name="borrow" value="true" />
-                <input type="submit" value="Submit" />
-            </form>
-        </td>
-    </tr>
-
-</table>
-
-
-
-
-<!--<table border="1">-->
-<!--<tr th:each="jbcLibrary: ${jbcLibraries}">-->
-<!---->
-<!--</tr>-->
-<!--</table>-->
 
 
 </body>

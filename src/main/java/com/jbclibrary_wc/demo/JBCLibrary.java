@@ -38,9 +38,6 @@ public class JBCLibrary {
 
     private boolean borrowed;
 
-    private boolean returned;
-
-
 
 
 
@@ -101,12 +98,17 @@ public class JBCLibrary {
     public void setBorrowed(boolean borrowed) {
         //this.borrowed = borrowed;
 
-        if (borrowed==true)
-            System.out.println(title + "by" + author + "is already checked out.");
+        if (borrowed ==false)
 
-        else{
-            borrowed=true;
-            System.out.println("You have checked out " + title + "by" + author +".");
+            this.borrowed = false;
+            //System.out.println(title + "by" + author + "is already checked out.");
+
+        else
+
+            this.borrowed = true;
+
+//            borrowed=true;
+//            System.out.println("You have checked out " + title + "by" + author +".");
         }
 
     }
@@ -126,4 +128,5 @@ public class JBCLibrary {
 //        }
 //
 //    }
-}
+
+
