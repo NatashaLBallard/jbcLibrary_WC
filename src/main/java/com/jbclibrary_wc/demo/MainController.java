@@ -118,18 +118,43 @@ public class MainController {
     }
 
     @RequestMapping("/checkbox-process")
-    public String checked(@RequestParam boolean borrowed){
-        if (borrowed==false) {
-            System.out.println("Book is not checked out");
-//            this.borrowed==true
+    public String checked(@RequestParam(defaultValue = "false") boolean borrowed){
+        if (borrowed==true) {
+            System.out.println("Book is checked out");
             return "borrow_show";
         }
         else
-            System.out.println("Book is checked out");
-        //jbcLibraryRepository.save(jbcLibrary);
+            System.out.println("Book is not checked out");
+
+        //${jbcLibrary.borrowed}==true;
         return "redirect:/";
     }
 
+//    @RequestMapping(value="/jbcLibrary.borrowed/{id}", method=RequestMethod.GET)
+//    public String setCheckBox(@PathVariable("id")boolean borrowed, Model model){
+//        model.addAttribute("true", this.setCheckBox("false"));
+//        return "Updated value";
+//    }
+
+
+
+
+
+
+//    @RequestMapping("/checkbox-process")
+//    public String checked(@RequestParam() boolean borrowed){
+//        if (borrowed==false) {
+//            System.out.println("Book is not checked out");
+//            //borrowed=false;
+//            return "borrow_show";
+//        }
+//        else
+//            System.out.println("Book is checked out");
+//        jbcLibraryRepository.save(jbcLibrary.borrowed);
+//
+//        //${jbcLibrary.borrowed}==true;
+//        return "redirect:/";
+//    }
 
 
 
