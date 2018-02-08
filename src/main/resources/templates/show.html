@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+Show page <br/>
+
+
+
+<span th:text="${jbcLibrary.title}"></span><br/>
+<span th:text="${jbcLibrary.author}"></span><br/>
+<span th:text="${jbcLibrary.year}"></span><br/>
+<span th:text="${jbcLibrary.isbn}"></span><br/>
+<a th:href="@{'//'+${jbcLibrary.image}}" target="_blank"><span th:text="${jbcLibrary.image}"></span></a><br/>
+<br/>
+
+
+</body>
+</html>
