@@ -94,9 +94,10 @@ public class MainController {
     //View Borrowed Books page
     @RequestMapping("/borrow")
     public String listBorrowedBooks(Model model){
-        model.addAttribute("jbcLibraries", new JBCLibrary());
+        model.addAttribute("jbcLibraries", jbcLibraryRepository.findAll());
         return "borrow";
     }
+
 
 
 
