@@ -8,7 +8,11 @@
 Borrow page
 
 
-
+<form action="/checkbox-process" method="post">
+    <!--<input type="submit" value="Borrow" />-->
+    <input th:each="jbcLibrary: ${jbcLibraries}" th:field="${jbcLibrary.borrowed}" type="checkbox" name="borrowed" />
+    <input type="submit" value="Submit"  />
+</form>
 
 <table border="1" >
     <tr>
@@ -27,11 +31,7 @@ Borrow page
         <td th:text="${jbcLibrary.image}"></td>
         <td th:text="${jbcLibrary.borrowed}"></td>
         <td>
-            <form action="/checkbox-process" method="post">
-                <!--<input type="submit" value="Borrow" />-->
-                <input type="checkbox" name="borrowed" />
-                <input type="submit" value="Submit"  />
-            </form>
+
         </td>
     </tr>
 

@@ -101,12 +101,12 @@ public class MainController {
 
 
 
-    //Add Checked book to Borrow Repository page
-    @GetMapping("/add_borrow")
-    public String addBorrowedBook(Model model){
-        model.addAttribute("jbcLibrary", new JBCLibrary());
-        return "borrow";
-    }
+//    //Add Checked book to Borrow Repository page
+//    @GetMapping("/add_borrow")
+//    public String addBorrowedBook(Model model){
+//        model.addAttribute("jbcLibrary", new JBCLibrary());
+//        return "borrow";
+//    }
 
     //Process Borrow Checkbox
     @PostMapping("/borrow_process")
@@ -119,16 +119,36 @@ public class MainController {
     }
 
     @RequestMapping("/checkbox-process")
-    public String checked(@RequestParam(defaultValue = "false") boolean borrowed){
-        if (borrowed==true) {
+    //@RequestMapping(value = "/jbcLibrary.borrowed/{id}", method=RequestMethod.GET)
+    public String checked(@RequestParam(defaultValue = "false") @ModelAttribute("jbcLibrary")  JBCLibrary jbcLibrary){
+        if (jbcLibrary.isBorrowed()== true) {
             System.out.println("Book is checked out");
-            return "borrow_show";
+
+
+
+            //Boolean.toString(boolean jbcLibrary.borrowed);
+            //model.addAttribute("jbcLibrary", borrowed)
+
+            //jbcLibrary = jbcLibraryRepository.save(String.valueOf(borrowed));
+
+
+            //put(jbcLibrary.borrowed())
+            //model.addAttribute("borrowed",
+                    //model.addAttribute("jbcLibraries", jbcLibraryRepository.findAll());
+            //jbcLibrary.borrowed/{id} = (true);
+            //borrowed.jbcLibrary = String.valueOf(true);
+            //return (true);
+            //WORKS - return "borrow_show";
         }
+
         else
             System.out.println("Book is not checked out");
 
+//            return (false);
+        return "borrowed";
+
         //${jbcLibrary.borrowed}==true;
-        return "redirect:/";
+        //return "redirect:/";
     }
 
 //    @RequestMapping(value="/jbcLibrary.borrowed/{id}", method=RequestMethod.GET)
