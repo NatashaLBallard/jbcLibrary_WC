@@ -13,8 +13,9 @@ Form page
       method="post">
     <input type="hidden" th:field="*{id}" />
 
-    <h2>General</h2>
-    Title: <input type="text" th:field="*{title}" />
+
+    <strong>Title: </strong>
+    <input type="text" th:field="*{title}" />
     <span th:if="${#fields.hasErrors('title')}"
           th:errors="*{title}"></span><br/>
 
