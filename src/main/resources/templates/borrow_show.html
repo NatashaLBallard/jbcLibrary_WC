@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+Borrow Show page <br/><br/>
+
+
+
+
+<span th:text="${borrowedBook.title}"></span><br/>
+<span th:text="${borrowedBook.author}"></span><br/>
+<span th:text="${borrowedBook.year}"></span><br/>
+<span th:text="${borrowedBook.isbn}"></span><br/>
+<a th:href="@{'//'+${borrowedBook.image}}" target="_blank"><span th:text="${borrowedBook.image}"></span></a><br/>
+<br/>
+
+
+</body>
+</html>

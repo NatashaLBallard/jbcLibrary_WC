@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Borrow</title>
+</head>
+<body>
+Borrow page
+
+
+
+
+<table border="1" >
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>ISBN</th>
+        <th>Image</th>
+        <th>Borrowed</th>
+    </tr>
+    <tr th:each="borrowedBook: ${borrowedBooks}">
+        <td th:text="${borrowedBook.title}"></td>
+        <td th:text="${borrowedBook.author}"></td>
+        <td th:text="${borrowedBook.year}"></td>
+        <td th:text="${borrowedBook.isbn}"></td>
+        <td th:text="${borrowedBook.image}"></td>
+        <td th:text="${borrowedBook.borrowed}"></td>
+        <td>
+            <a th:href="@{/update-borrow/{id}(id=${borrowedBook.id})}">Update</a>
+            <a th:href="@{/detail-borrow/{id}(id=${borrowedBook.id})}">Details</a>
+            <a th:href="@{/delete-borrow/{id}(id=${borrowedBook.id})}">Delete</a>
+        </td>
+        <td>
+            <form action="#">
+                <input type="checkbox" name="borrow" value="true" />
+                <input type="submit" value="Submit" />
+            </form>
+        </td>
+    </tr>
+
+</table>
+
+
+<hr/>
+
+
+<table border="1" >
+    <tr>
+        <th>Title</th>
+        <th>Borrowed</th>
+    </tr>
+    <tr th:each="borrowedBook: ${borrowedBooks}">
+        <td th:text="${borrowedBook.title}"></td>
+        <td th:text="${borrowedBook.borrowed}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${borrowedBook.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${borrowedBook.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${borrowedBook.id})}">Delete</a>
+        </td>
+        <td>
+            <form action="#">
+                <input type="checkbox" name="borrow" value="true" />
+                <input type="submit" value="Submit" />
+            </form>
+        </td>
+    </tr>
+
+</table>
+
+
+
+
+<!--<table border="1">-->
+<!--<tr th:each="jbcLibrary: ${jbcLibraries}">-->
+<!---->
+<!--</tr>-->
+<!--</table>-->
+
+
+</body>
+</html>
